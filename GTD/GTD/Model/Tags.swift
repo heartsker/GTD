@@ -11,11 +11,11 @@ import SwiftUI
 class Tag: Hashable {
 
 	var name: String
-	var color: Color
+	var color: ColorPalette
 
 	init(name: String) {
 		self.name = name
-		color = Color.random
+		color = .random
 	}
 
 	static func == (lhs: Tag, rhs: Tag) -> Bool {

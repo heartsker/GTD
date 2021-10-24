@@ -8,11 +8,9 @@
 import Foundation
 
 class Stack {
-	var name: String
 	var content: [Thing]
 
-	init(name: String) {
-		self.name = name
+	init() {
 		content = []
 	}
 

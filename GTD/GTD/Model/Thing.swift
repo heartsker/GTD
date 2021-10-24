@@ -8,22 +8,34 @@
 import Foundation
 
 class Thing: Hashable {
-	var name: String
-	var description: String?
+	private(set) var name: String
+	private(set) var stack: Stack
+	private(set) var description: String?
+	private(set) var tags: Set<Tag>
 
 	private(set) var createdDate: Date = Date()
-	var onDate: Date?
-	var dueToDate: Date?
+	private(set) var onDate: Date?
+	private(set) var dueToDate: Date?
 
-	var content: [Thing]
+	private(set) var content: [Thing]
 
-	init(name: String) {
+	init(_ name: String, to stack: Stack) {
 		self.name = name
+		self.stack = stack
 		description = nil
+		tags = []
 		content = []
 		createdDate = Date()
 		onDate = nil
 		dueToDate = nil
+	}
+
+	func addTag(_ tag: Tag) {
+		tags.insert(tag)
+	}
+
+	func move(to stack: Stack) {
+		self.stack = stack
 	}
 
 	static func == (lhs: Thing, rhs: Thing) -> Bool {
