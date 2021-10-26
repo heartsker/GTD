@@ -10,7 +10,7 @@ import Foundation
 class Thing: Hashable, CustomStringConvertible {
 	var description: String {
 		var str = "\t\(name)"
-		if let details = details {
+		if let details = body {
 			str += "\n\t\(details)"
 		}
 		str += "\n\tTags: [ "
@@ -22,25 +22,20 @@ class Thing: Hashable, CustomStringConvertible {
 	}
 
 	private(set) var name: String
-	private(set) var details: String?
+	private(set) var stack: StackType
+	private(set) var body: String?
 	private(set) var tags: Set<Tag>
-
 	private(set) var createdDate: Date = Date()
-	private(set) var onDate: Date?
-	private(set) var dueToDate: Date?
 
-	private(set) var content: [Thing]
+	private(set) var workspace: Workspace
 
-	var workspace: Workspace?
-
-	init(_ name: String) {
+	init(name: String, workspace: Workspace, stack: StackType = .all, body: String? = nil, tags: Set<Tag> = []) {
 		self.name = name
-		details = nil
-		tags = []
-		content = []
+		self.workspace = workspace
+		self.body = body
+		self.tags = tags
+		self.stack = stack
 		createdDate = Date()
-		onDate = nil
-		dueToDate = nil
 	}
 
 	func update(name: String) {
@@ -48,33 +43,18 @@ class Thing: Hashable, CustomStringConvertible {
 	}
 
 	func update(details: String?) {
-		self.details = description
+		self.body = description
 	}
 
-	func remove(tag: Tag) {
-		tags.remove(tag)
+	func update(tags: Set<Tag>) {
+		self.tags = tags
+		workspace.tags = workspace.tags.union(tags)
 	}
 
-	func add(tag: Tag) {
-		tags.insert(tag)
-	}
-
-	func update(onDate: Date?) {
-		self.onDate = onDate
-	}
-
-	func update(dueToDate: Date?) {
-		self.dueToDate = dueToDate
-	}
-
-	func add(subThing: Thing) {
-		content.append(subThing)
-	}
-
-	func remove(subThing: Thing) {
-		if let idx = content.firstIndex(of: subThing) {
-			content.remove(at: idx)
-		}
+	func move(to stack: StackType) {
+		workspace.remove(self, from: self.stack)
+		self.stack = stack
+		workspace.add(self, to: stack)
 	}
 
 	static func == (lhs: Thing, rhs: Thing) -> Bool {

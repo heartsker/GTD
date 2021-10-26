@@ -9,7 +9,6 @@ import Foundation
 
 class Workspace: CustomStringConvertible {
 
-
 	var description: String {
 		var str = ""
 		for stack in StackType.allCases {
@@ -21,42 +20,26 @@ class Workspace: CustomStringConvertible {
 		return str
 	}
 
-	private(set) var tags: Set<Tag>
-
+	var tags: Set<Tag>
 	private var stacks: [StackType: Stack]
+	private var preferences: Preferences
 
 	init() {
 		tags = []
 		stacks = [:]
+		preferences = Preferences()
 
-		for type in StackType.allCases {
+		StackType.allCases.forEach { type in
 			stacks[type] = Stack()
 		}
 	}
 
-	func add(tag: Tag) {
-		tags.insert(tag)
-	}
-
-	func remove(tag: Tag) {
-		tags.remove(tag)
+	func remove(_ thing: Thing, from stack: StackType) {
+		stacks[stack]?.remove(thing)
 	}
 
 	func add(_ thing: Thing, to stack: StackType) {
-		thing.workspace = self
-		stacks[stack]?.content.append(thing)
+		stacks[stack]?.add(thing)
 	}
 
-	func remove(_ thing: Thing) {
-		for stack in StackType.allCases {
-			stacks[stack]?.remove(thing)
-		}
-		thing.workspace = nil
-	}
-
-	func move(_ thing: Thing, to stack: StackType) {
-		remove(thing)
-		add(thing, to: stack)
-	}
-	
 }

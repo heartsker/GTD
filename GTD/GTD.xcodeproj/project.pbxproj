@@ -21,6 +21,7 @@
 		A95E8F442725A49000D52B24 /* Tags.swift in Sources */ = {isa = PBXBuildFile; fileRef = A95E8F432725A49000D52B24 /* Tags.swift */; };
 		A95E8F4B2725AC0700D52B24 /* Stack.swift in Sources */ = {isa = PBXBuildFile; fileRef = A95E8F4A2725AC0700D52B24 /* Stack.swift */; };
 		A95E8F4D2725ACA900D52B24 /* Workspace.swift in Sources */ = {isa = PBXBuildFile; fileRef = A95E8F4C2725ACA900D52B24 /* Workspace.swift */; };
+		A9AE264F2728AC1900889867 /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9AE264E2728AC1900889867 /* Preferences.swift */; };
 		A9C9FEE12725C84B00BF2248 /* ColorPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9C9FEE02725C84B00BF2248 /* ColorPalette.swift */; };
 		A9C9FEE32725CB8100BF2248 /* StackType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9C9FEE22725CB8100BF2248 /* StackType.swift */; };
 /* End PBXBuildFile section */
@@ -60,6 +61,7 @@
 		A95E8F432725A49000D52B24 /* Tags.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tags.swift; sourceTree = "<group>"; };
 		A95E8F4A2725AC0700D52B24 /* Stack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stack.swift; sourceTree = "<group>"; };
 		A95E8F4C2725ACA900D52B24 /* Workspace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Workspace.swift; sourceTree = "<group>"; };
+		A9AE264E2728AC1900889867 /* Preferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preferences.swift; sourceTree = "<group>"; };
 		A9C9FEE02725C84B00BF2248 /* ColorPalette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPalette.swift; sourceTree = "<group>"; };
 		A9C9FEE22725CB8100BF2248 /* StackType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackType.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -158,6 +160,7 @@
 				A95E8F4A2725AC0700D52B24 /* Stack.swift */,
 				A9C9FEE22725CB8100BF2248 /* StackType.swift */,
 				A95E8F4C2725ACA900D52B24 /* Workspace.swift */,
+				A9AE264E2728AC1900889867 /* Preferences.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -294,6 +297,7 @@
 			files = (
 				A95E8F19272597E100D52B24 /* Persistence.swift in Sources */,
 				A95E8F422725A2AE00D52B24 /* Thing.swift in Sources */,
+				A9AE264F2728AC1900889867 /* Preferences.swift in Sources */,
 				A95E8F442725A49000D52B24 /* Tags.swift in Sources */,
 				A95E8F12272597DD00D52B24 /* ContentView.swift in Sources */,
 				A95E8F10272597DD00D52B24 /* GTDApp.swift in Sources */,
