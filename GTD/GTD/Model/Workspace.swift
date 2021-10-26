@@ -7,11 +7,23 @@
 
 import Foundation
 
-class Workspace {
+class Workspace: CustomStringConvertible {
 
-	var tags: Set<Tag>
 
-	var stacks: [StackType: Stack]
+	var description: String {
+		var str = ""
+		for stack in StackType.allCases {
+			str += "\n\(stack.rawValue)"
+			for thing in stacks[stack]!.content {
+				str += "\n✔️ \(thing.description)"
+			}
+		}
+		return str
+	}
+
+	private(set) var tags: Set<Tag>
+
+	private var stacks: [StackType: Stack]
 
 	init() {
 		tags = []
@@ -22,12 +34,29 @@ class Workspace {
 		}
 	}
 
-	func addTag(name: String) {
-		tags.insert(Tag(name: name))
+	func add(tag: Tag) {
+		tags.insert(tag)
 	}
 
-	func addThing(_ thing: Thing, to stack: StackType) {
-		stacks[stack]!.content.append(thing)
+	func remove(tag: Tag) {
+		tags.remove(tag)
+	}
+
+	func add(_ thing: Thing, to stack: StackType) {
+		thing.workspace = self
+		stacks[stack]?.content.append(thing)
+	}
+
+	func remove(_ thing: Thing) {
+		for stack in StackType.allCases {
+			stacks[stack]?.remove(thing)
+		}
+		thing.workspace = nil
+	}
+
+	func move(_ thing: Thing, to stack: StackType) {
+		remove(thing)
+		add(thing, to: stack)
 	}
 	
 }

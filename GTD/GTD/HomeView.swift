@@ -29,27 +29,30 @@ func foo() {
 
 	let workspace = Workspace()
 
-	let thing1 = Thing("first", to: workspace.stacks[.all]!)
-	sleep(UInt32.random(in: 0...10))
-	let thing2 = Thing("second", to: workspace.stacks[.all]!)
-	sleep(UInt32.random(in: 0...10))
-	let thing3 = Thing("third", to: workspace.stacks[.all]!)
-	sleep(UInt32.random(in: 0...10))
-	let thing4 = Thing("fourth", to: workspace.stacks[.all]!)
+	let thing1 = Thing("first")
+//	sleep(UInt32.random(in: 0...10))
+	let thing2 = Thing("second")
+//	sleep(UInt32.random(in: 0...10))
+	let thing3 = Thing("third")
+//	sleep(UInt32.random(in: 0...10))
+	let thing4 = Thing("fourth")
+//	sleep(UInt32.random(in: 0...10))
+	let thing5 = Thing("fifth")
 
-	workspace.addThing(thing1, to: .ongoing)
-	workspace.addThing(thing2, to: .all)
-	workspace.addThing(thing3, to: .ongoing)
-	workspace.addThing(thing4, to: .calendar)
+	workspace.add(thing1, to: .ongoing)
+	workspace.add(thing2, to: .ongoing)
+	workspace.add(thing3, to: .ongoing)
+	workspace.add(thing4, to: .ongoing)
+	workspace.add(thing5, to: .ongoing)
 
-	for stack in workspace.stacks.keys {
-		print(stack.rawValue)
-		for thing in workspace.stacks[stack]!.content {
-			print("Name: \(thing.name)")
-			print("Created: \(thing.createdDate)")
-			print("Tags: \(thing.tags)")
-		}
-	}
+	thing1.add(tag: Tag(name: "Super"))
 
+	workspace.move(thing1, to: .await)
+	workspace.move(thing2, to: .calendar)
+	workspace.move(thing3, to: .later)
+	workspace.move(thing4, to: .all)
 
+	print(workspace)
+
+	print(workspace.tags)
 }

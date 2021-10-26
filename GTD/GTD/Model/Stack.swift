@@ -17,4 +17,10 @@ class Stack {
 	func add(_ thing: Thing) {
 		content.append(thing)
 	}
+
+	func remove(_ thing: Thing) {
+		if let idx = content.firstIndex(of: thing) {
+			content.remove(at: idx)
+		}
+	}
 }

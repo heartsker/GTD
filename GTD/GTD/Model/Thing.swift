@@ -7,10 +7,22 @@
 
 import Foundation
 
-class Thing: Hashable {
+class Thing: Hashable, CustomStringConvertible {
+	var description: String {
+		var str = "\t\(name)"
+		if let details = details {
+			str += "\n\t\(details)"
+		}
+		str += "\n\tTags: [ "
+		for tag in tags {
+			str += "\(tag.name) "
+		}
+		str += "]"
+		return str
+	}
+
 	private(set) var name: String
-	private(set) var stack: Stack
-	private(set) var description: String?
+	private(set) var details: String?
 	private(set) var tags: Set<Tag>
 
 	private(set) var createdDate: Date = Date()
@@ -19,10 +31,11 @@ class Thing: Hashable {
 
 	private(set) var content: [Thing]
 
-	init(_ name: String, to stack: Stack) {
+	var workspace: Workspace?
+
+	init(_ name: String) {
 		self.name = name
-		self.stack = stack
-		description = nil
+		details = nil
 		tags = []
 		content = []
 		createdDate = Date()
@@ -30,12 +43,38 @@ class Thing: Hashable {
 		dueToDate = nil
 	}
 
-	func addTag(_ tag: Tag) {
+	func update(name: String) {
+		self.name = name
+	}
+
+	func update(details: String?) {
+		self.details = description
+	}
+
+	func remove(tag: Tag) {
+		tags.remove(tag)
+	}
+
+	func add(tag: Tag) {
 		tags.insert(tag)
 	}
 
-	func move(to stack: Stack) {
-		self.stack = stack
+	func update(onDate: Date?) {
+		self.onDate = onDate
+	}
+
+	func update(dueToDate: Date?) {
+		self.dueToDate = dueToDate
+	}
+
+	func add(subThing: Thing) {
+		content.append(subThing)
+	}
+
+	func remove(subThing: Thing) {
+		if let idx = content.firstIndex(of: subThing) {
+			content.remove(at: idx)
+		}
 	}
 
 	static func == (lhs: Thing, rhs: Thing) -> Bool {
