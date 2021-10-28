@@ -14,9 +14,9 @@ struct HomeView: View {
 			Color.black.ignoresSafeArea()
 
 			Button {
-				foo()
+				test()
 			} label: {
-				Image(systemName: "play")
+				Image(systemName: "Test")
 			}
 			.font(.largeTitle)
 			.foregroundColor(.orange)
@@ -31,7 +31,7 @@ struct HomeView_Previews: PreviewProvider {
     }
 }
 
-func foo() {
+func test() {
 
 	let workspace = Workspace()
 
@@ -60,11 +60,4 @@ func foo() {
 	thing5.update(tags: [Tag("old")])
 
 	print(workspace)
-}
-
-extension Thing {
-	static func random(_ workspace: Workspace) -> Thing {
-		let name = "Thing #\(Int.random(in: 1...100))"
-		return Thing(name: name, workspace: workspace, stack: .all, body: "Body of \(name)")
-	}
 }

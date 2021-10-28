@@ -8,6 +8,12 @@
 import Foundation
 
 class Thing: Hashable, CustomStringConvertible {
+
+	static func random(_ workspace: Workspace) -> Thing {
+		let name = "Thing #\(Int.random(in: 1...100))"
+		return Thing(name: name, workspace: workspace, stack: .all, body: "Body of \(name)")
+	}
+
 	var description: String {
 		var str = "\tName: \(name)\n"
 		if let details = body {
