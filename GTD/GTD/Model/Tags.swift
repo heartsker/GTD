@@ -13,8 +13,8 @@ class Tag: Hashable {
 	var name: String
 	var color: ColorPalette
 
-	init(name: String) {
-		self.name = name
+	init(_ name: String) {
+		self.name = "#\(name)"
 		color = .random
 	}
 

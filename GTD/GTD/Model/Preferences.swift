@@ -12,5 +12,10 @@ class Preferences {
 
 	init() {
 		dateFormatter = DateFormatter()
+		dateFormatter.dateFormat = "d MMM yyyy, h:mm a"
+	}
+
+	func dateString(_ date: Date) -> String {
+		dateFormatter.string(from: date)
 	}
 }

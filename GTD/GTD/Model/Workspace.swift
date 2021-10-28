@@ -10,13 +10,15 @@ import Foundation
 class Workspace: CustomStringConvertible {
 
 	var description: String {
-		var str = ""
+		var str = "----------------------------------------------------------------\n"
 		for stack in StackType.allCases {
-			str += "\n\(stack.rawValue)"
-			for thing in stacks[stack]!.content {
-				str += "\n✔️ \(thing.description)"
-			}
+			str += stacks[stack]!.description
 		}
+		str += "Tags: [ "
+		for tag in tags {
+			str += "\(tag.name) "
+		}
+		str += "]"
 		return str
 	}
 
@@ -30,14 +32,14 @@ class Workspace: CustomStringConvertible {
 		return all
 	}
 	private var stacks: [StackType: Stack]
-	private var preferences: Preferences
+	var preferences: Preferences
 
 	init() {
 		stacks = [:]
 		preferences = Preferences()
 
 		StackType.allCases.forEach { type in
-			stacks[type] = Stack()
+			stacks[type] = Stack(type)
 		}
 	}
 

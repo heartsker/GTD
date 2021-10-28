@@ -7,10 +7,24 @@
 
 import Foundation
 
-class Stack {
-	var content: [Thing]
+class Stack: CustomStringConvertible {
+	var description: String {
+		var str = type.rawValue + " [\(count)]\n"
+		for (idx, thing) in content.enumerated() {
+			str += "\t[\(idx + 1)]\n" + thing.description
+		}
+		return str
+	}
 
-	init() {
+	var content: [Thing]
+	let type: StackType
+
+	var count: Int {
+		content.count
+	}
+
+	init(_ type: StackType) {
+		self.type = type
 		content = []
 	}
 

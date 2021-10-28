@@ -10,12 +10,18 @@ import SwiftUI
 struct HomeView: View {
     var body: some View {
 
-		Button {
-			foo()
-		} label: {
-			Image(systemName: "plus")
-		}
+		ZStack {
+			Color.black.ignoresSafeArea()
 
+			Button {
+				foo()
+			} label: {
+				Image(systemName: "play")
+			}
+			.font(.largeTitle)
+			.foregroundColor(.orange)
+			.padding()
+		}
     }
 }
 
@@ -37,11 +43,28 @@ func foo() {
 
 	print(workspace)
 
-	print(workspace.tags)
+	thing1.move(to: .later)
+	thing2.move(to: .await)
+	thing3.move(to: .ongoing)
+	thing4.move(to: .calendar)
+
+	print(workspace)
+
+	thing5.add(tag: Tag("new"))
+	thing3.add(tag: Tag("emergersy"))
+
+	print(workspace)
+
+	thing1.update(tags: [Tag("hi"), Tag("end")])
+
+	thing5.update(tags: [Tag("old")])
+
+	print(workspace)
 }
 
 extension Thing {
 	static func random(_ workspace: Workspace) -> Thing {
-		Thing(name: "\(Int.random(in: 1...100))", workspace: workspace, stack: .all, body: "some body")
+		let name = "Thing #\(Int.random(in: 1...100))"
+		return Thing(name: name, workspace: workspace, stack: .all, body: "Body of \(name)")
 	}
 }

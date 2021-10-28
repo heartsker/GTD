@@ -9,15 +9,16 @@ import Foundation
 
 class Thing: Hashable, CustomStringConvertible {
 	var description: String {
-		var str = "\t\(name)"
+		var str = "\tName: \(name)\n"
 		if let details = body {
-			str += "\n\t\(details)"
+			str += "\tDetails: \(details)\n"
 		}
-		str += "\n\tTags: [ "
+		str += "\tTags: [ "
 		for tag in tags {
 			str += "\(tag.name) "
 		}
-		str += "]"
+		str += "]\n"
+		str += "\tCreated: \(workspace.preferences.dateString(createdDate))\n"
 		return str
 	}
 
@@ -49,6 +50,10 @@ class Thing: Hashable, CustomStringConvertible {
 
 	func update(details: String?) {
 		self.body = description
+	}
+
+	func add(tag: Tag) {
+		tags.insert(tag)
 	}
 
 	func update(tags: Set<Tag>) {
