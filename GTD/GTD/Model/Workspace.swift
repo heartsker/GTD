@@ -20,12 +20,19 @@ class Workspace: CustomStringConvertible {
 		return str
 	}
 
-	var tags: Set<Tag>
+	var tags: Set<Tag> {
+		var all: Set<Tag> = []
+		for stack in StackType.allCases {
+			for thing in stacks[stack]!.content {
+				all.formUnion(thing.tags)
+			}
+		}
+		return all
+	}
 	private var stacks: [StackType: Stack]
 	private var preferences: Preferences
 
 	init() {
-		tags = []
 		stacks = [:]
 		preferences = Preferences()
 

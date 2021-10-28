@@ -35,7 +35,12 @@ class Thing: Hashable, CustomStringConvertible {
 		self.body = body
 		self.tags = tags
 		self.stack = stack
-		createdDate = Date()
+		createdDate = Date.now
+		self.workspace.add(self, to: stack)
+	}
+
+	deinit {
+		workspace.remove(self, from: stack)
 	}
 
 	func update(name: String) {
@@ -48,7 +53,6 @@ class Thing: Hashable, CustomStringConvertible {
 
 	func update(tags: Set<Tag>) {
 		self.tags = tags
-		workspace.tags = workspace.tags.union(tags)
 	}
 
 	func move(to stack: StackType) {
