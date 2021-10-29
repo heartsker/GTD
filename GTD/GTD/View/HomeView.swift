@@ -16,7 +16,7 @@ struct HomeView: View {
 			Button {
 				test()
 			} label: {
-				Image(systemName: "Test")
+				Text("My workspace")
 			}
 			.font(.largeTitle)
 			.foregroundColor(.orange)

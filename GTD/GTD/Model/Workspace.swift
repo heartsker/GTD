@@ -7,7 +7,7 @@
 
 import Foundation
 
-class Workspace: CustomStringConvertible {
+class Workspace: CustomStringConvertible, ObservableObject {
 
 	var description: String {
 		var str = "----------------------------------------------------------------\n"
@@ -31,8 +31,8 @@ class Workspace: CustomStringConvertible {
 		}
 		return all
 	}
-	private var stacks: [StackType: Stack]
-	var preferences: Preferences
+	@Published private var stacks: [StackType: Stack]
+	@Published var preferences: Preferences
 
 	init() {
 		stacks = [:]

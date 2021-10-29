@@ -24,7 +24,7 @@ class Thing: Hashable, CustomStringConvertible {
 			str += "\(tag.name) "
 		}
 		str += "]\n"
-		str += "\tCreated: \(workspace.preferences.dateString(createdDate))\n"
+		str += "\tCreated: \(createdDateString)\n"
 		return str
 	}
 
@@ -46,6 +46,10 @@ class Thing: Hashable, CustomStringConvertible {
 		self.workspace.add(self, to: stack)
 	}
 
+	var createdDateString: String {
+		workspace.preferences.dateString(createdDate)
+	}
+
 	deinit {
 		workspace.remove(self, from: stack)
 	}
@@ -54,8 +58,8 @@ class Thing: Hashable, CustomStringConvertible {
 		self.name = name
 	}
 
-	func update(details: String?) {
-		self.body = description
+	func update(body: String?) {
+		self.body = body
 	}
 
 	func add(tag: Tag) {
