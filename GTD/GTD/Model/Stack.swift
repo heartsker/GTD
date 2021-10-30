@@ -7,7 +7,7 @@
 
 import Foundation
 
-class Stack: CustomStringConvertible {
+class Stack: ObservableObject, CustomStringConvertible {
 	var description: String {
 		var str = type.rawValue + " [\(count)]\n"
 		for (idx, thing) in content.enumerated() {
@@ -16,7 +16,7 @@ class Stack: CustomStringConvertible {
 		return str
 	}
 
-	var content: [Thing]
+	@Published var content: [Thing]
 	let type: StackType
 
 	var count: Int {

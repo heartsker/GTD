@@ -31,10 +31,12 @@ class Workspace: CustomStringConvertible, ObservableObject {
 		}
 		return all
 	}
-	@Published private var stacks: [StackType: Stack]
+	@Published var name: String
+	@Published var stacks: [StackType: Stack]
 	@Published var preferences: Preferences
 
-	init() {
+	init(name: String = "My workspace") {
+		self.name = name
 		stacks = [:]
 		preferences = Preferences()
 

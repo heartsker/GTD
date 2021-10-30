@@ -7,8 +7,8 @@
 
 import Foundation
 
-class Preferences {
-	var dateFormatter: DateFormatter
+class Preferences: ObservableObject {
+	@Published var dateFormatter: DateFormatter
 
 	init() {
 		dateFormatter = DateFormatter()

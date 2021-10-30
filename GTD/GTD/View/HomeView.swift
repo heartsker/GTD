@@ -8,19 +8,16 @@
 import SwiftUI
 
 struct HomeView: View {
+
+	let workspace = Workspace()
+
     var body: some View {
 
 		ZStack {
-			Color.black.ignoresSafeArea()
+//			Color.black.ignoresSafeArea()
 
-			Button {
-				test()
-			} label: {
-				Text("My workspace")
-			}
-			.font(.largeTitle)
-			.foregroundColor(.orange)
-			.padding()
+			WorkspaceView()
+				.environmentObject(workspace)
 		}
     }
 }

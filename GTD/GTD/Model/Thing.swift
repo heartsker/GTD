@@ -7,7 +7,7 @@
 
 import Foundation
 
-class Thing: Hashable, CustomStringConvertible {
+class Thing: Hashable, Identifiable, ObservableObject, CustomStringConvertible {
 
 	static func random(_ workspace: Workspace) -> Thing {
 		let name = "Thing #\(Int.random(in: 1...100))"
@@ -28,13 +28,14 @@ class Thing: Hashable, CustomStringConvertible {
 		return str
 	}
 
-	private(set) var name: String
-	private(set) var stack: StackType
-	private(set) var body: String?
-	private(set) var tags: Set<Tag>
-	private(set) var createdDate: Date = Date()
+	var id = UUID()
+	@Published private(set) var name: String
+	@Published private(set) var stack: StackType
+	@Published private(set) var body: String?
+	@Published private(set) var tags: Set<Tag>
+	@Published private(set) var createdDate: Date = Date()
 
-	private(set) var workspace: Workspace
+	@Published private(set) var workspace: Workspace
 
 	init(name: String, workspace: Workspace, stack: StackType = .all, body: String? = nil, tags: Set<Tag> = []) {
 		self.name = name
@@ -52,6 +53,12 @@ class Thing: Hashable, CustomStringConvertible {
 
 	deinit {
 		workspace.remove(self, from: stack)
+	}
+
+	func update(thing: Thing) {
+		update(name: thing.name)
+		update(body: thing.body)
+		update(tags: thing.tags)
 	}
 
 	func update(name: String) {
@@ -77,12 +84,10 @@ class Thing: Hashable, CustomStringConvertible {
 	}
 
 	static func == (lhs: Thing, rhs: Thing) -> Bool {
-		lhs.name == rhs.name &&
-		lhs.createdDate == rhs.createdDate
+		lhs.id == rhs.id
 	}
 
 	func hash(into hasher: inout Hasher) {
-		hasher.combine(name)
-		hasher.combine(createdDate)
+		hasher.combine(id)
 	}
 }

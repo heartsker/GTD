@@ -10,6 +10,8 @@ import SwiftUI
 struct ThingCardView: View {
 	@Binding var thing: Thing
 
+	@State var presentingView: Bool = false
+
 	let gradient = LinearGradient(colors: [.black.opacity(0.1), .black.opacity(0.2)], startPoint: .top, endPoint: .bottom)
 
 	var body: some View {
@@ -31,6 +33,12 @@ struct ThingCardView: View {
 		.background(gradient)
 		.clipShape(RoundedRectangle(cornerRadius: 20))
 		.shadow(color: .black.opacity(0.9), radius: 10, x: 10, y: 10)
+		.onTapGesture {
+			presentingView = true
+		}
+		.sheet(isPresented: $presentingView) {
+			ThingView(thing: $thing)
+		}
 	}
 }
 

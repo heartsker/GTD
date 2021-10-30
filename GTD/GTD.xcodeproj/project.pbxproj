@@ -26,6 +26,8 @@
 		A99DF673272C0DAC00C34669 /* WorkspaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A99DF672272C0DAC00C34669 /* WorkspaceView.swift */; };
 		A99DF675272C0E3B00C34669 /* ThingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A99DF674272C0E3B00C34669 /* ThingView.swift */; };
 		A9AE264F2728AC1900889867 /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9AE264E2728AC1900889867 /* Preferences.swift */; };
+		A9B402F5272D35C6006CECB8 /* StackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B402F4272D35C6006CECB8 /* StackView.swift */; };
+		A9B402F7272D3FCE006CECB8 /* NewThingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B402F6272D3FCD006CECB8 /* NewThingView.swift */; };
 		A9C9FEE12725C84B00BF2248 /* ColorPalette.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9C9FEE02725C84B00BF2248 /* ColorPalette.swift */; };
 		A9C9FEE32725CB8100BF2248 /* StackType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9C9FEE22725CB8100BF2248 /* StackType.swift */; };
 /* End PBXBuildFile section */
@@ -70,6 +72,8 @@
 		A99DF672272C0DAC00C34669 /* WorkspaceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkspaceView.swift; sourceTree = "<group>"; };
 		A99DF674272C0E3B00C34669 /* ThingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThingView.swift; sourceTree = "<group>"; };
 		A9AE264E2728AC1900889867 /* Preferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preferences.swift; sourceTree = "<group>"; };
+		A9B402F4272D35C6006CECB8 /* StackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackView.swift; sourceTree = "<group>"; };
+		A9B402F6272D3FCD006CECB8 /* NewThingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewThingView.swift; sourceTree = "<group>"; };
 		A9C9FEE02725C84B00BF2248 /* ColorPalette.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPalette.swift; sourceTree = "<group>"; };
 		A9C9FEE22725CB8100BF2248 /* StackType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackType.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -177,8 +181,10 @@
 			isa = PBXGroup;
 			children = (
 				A95E8F3E27259CE700D52B24 /* HomeView.swift */,
+				A9B402F6272D3FCD006CECB8 /* NewThingView.swift */,
 				A99DF672272C0DAC00C34669 /* WorkspaceView.swift */,
 				A99DF674272C0E3B00C34669 /* ThingView.swift */,
+				A9B402F4272D35C6006CECB8 /* StackView.swift */,
 				A91FB636272C6E530078E563 /* ThingCardView.swift */,
 				A91FB632272C683C0078E563 /* Constants.swift */,
 			);
@@ -319,6 +325,7 @@
 			files = (
 				A95E8F19272597E100D52B24 /* Persistence.swift in Sources */,
 				A99DF673272C0DAC00C34669 /* WorkspaceView.swift in Sources */,
+				A9B402F7272D3FCE006CECB8 /* NewThingView.swift in Sources */,
 				A95E8F422725A2AE00D52B24 /* Thing.swift in Sources */,
 				A9AE264F2728AC1900889867 /* Preferences.swift in Sources */,
 				A95E8F442725A49000D52B24 /* Tags.swift in Sources */,
@@ -330,6 +337,7 @@
 				A95E8F3F27259CE700D52B24 /* HomeView.swift in Sources */,
 				A95E8F4D2725ACA900D52B24 /* Workspace.swift in Sources */,
 				A9C9FEE32725CB8100BF2248 /* StackType.swift in Sources */,
+				A9B402F5272D35C6006CECB8 /* StackView.swift in Sources */,
 				A99DF675272C0E3B00C34669 /* ThingView.swift in Sources */,
 				A95E8F1C272597E100D52B24 /* GTD.xcdatamodeld in Sources */,
 				A9C9FEE12725C84B00BF2248 /* ColorPalette.swift in Sources */,
