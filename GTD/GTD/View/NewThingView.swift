@@ -28,20 +28,22 @@ struct NewThingView: View {
 				.font(.largeTitle)
 				.padding()
 
-			Picker(selection: $stack, content: {
-				ForEach(StackType.allCases, id: \.rawValue) {
-					Text($0.rawValue)
-						.font(.largeTitle)
-						.padding()
+			Picker("Stack", selection: $stack) {
+				ForEach(StackType.allCases, id: \.rawValue) { type in
+					Text(type.rawValue).tag(type)
 				}
-			}, label: { Text("Type")} )
-				.font(.largeTitle)
-				.padding()
+			}
 
 			Spacer()
 
 			Button {
-				_ = Thing(name: name, workspace: workspace, stack: stack, body: bodyString)
+				let thing = Thing(name: name, workspace: workspace, stack: stack, body: bodyString)
+
+				print(thing)
+				print(stack.rawValue)
+
+				print(workspace)
+
 				presenting = false
 			} label: {
 				Text("Add")

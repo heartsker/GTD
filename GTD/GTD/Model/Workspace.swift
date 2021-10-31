@@ -18,7 +18,8 @@ class Workspace: CustomStringConvertible, ObservableObject {
 		for tag in tags {
 			str += "\(tag.name) "
 		}
-		str += "]"
+		str += "]\n"
+		str += "----------------------------------------------------------------"
 		return str
 	}
 

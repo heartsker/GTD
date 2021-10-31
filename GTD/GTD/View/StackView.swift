@@ -18,11 +18,16 @@ struct StackView: View {
 				.font(.largeTitle)
 
 			ScrollView {
-			ForEach(stack.content) { thing in
-				ThingCardView(thing: Binding(get: { thing }, set: { thing.update(thing: $0) }))
-			}
+				VStack {
+				ForEach(stack.content) { thing in
+					VStack {
+						ThingCardView(thing: Binding(get: { thing }, set: { thing.update(thing: $0) }))
+					}
+				}
+				}
 			}
 		}
+		.frame(width: screen.width / 2)
 	}
 }
 

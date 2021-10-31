@@ -17,16 +17,25 @@ struct WorkspaceView: View {
 			Text(workspace.name)
 				.font(.largeTitle)
 
+			Button {
+				print("💥💥💥")
+				print(workspace)
+			} label: {
+				Text("💥💥💥")
+			}
 
 			ScrollView(.horizontal) {
 				HStack {
-					ForEach(StackType.allCases, id: \.rawValue) { type in
+					ForEach(workspace.stacks.keys.sorted(by: { $0.rawValue < $1.rawValue}), id: \.self) { type in
+						HStack {
 						StackView(stack: Binding(get: { workspace.stacks[type]!}, set: {workspace.stacks[type]! = $0}))
+						}
 					}
 				}
 			}
 
 			Button {
+				print(workspace)
 				presentingNewThingView = true
 			} label: {
 				Text("New")

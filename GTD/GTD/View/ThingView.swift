@@ -11,13 +11,9 @@ struct ThingView: View {
 
 	@Binding var thing: Thing
 
-
-
 	var body: some View {
 		ZStack {
 			VStack {
-
-
 				TextField("Name", text:
 							Binding(
 								get: { thing.name },
