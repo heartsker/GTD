@@ -7,7 +7,8 @@
 
 import Foundation
 
-class Stack: ObservableObject, CustomStringConvertible {
+class Stack: ObservableObject, Hashable, CustomStringConvertible {
+
 	var description: String {
 		var str = type.rawValue + " [\(count)]\n"
 		for (idx, thing) in content.enumerated() {
@@ -36,5 +37,14 @@ class Stack: ObservableObject, CustomStringConvertible {
 		if let idx = content.firstIndex(of: thing) {
 			content.remove(at: idx)
 		}
+	}
+
+	static func == (lhs: Stack, rhs: Stack) -> Bool {
+		lhs.type == rhs.type && lhs.content == rhs.content
+	}
+
+	func hash(into hasher: inout Hasher) {
+		hasher.combine(type)
+		hasher.combine(content)
 	}
 }

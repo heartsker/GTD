@@ -9,7 +9,7 @@ import SwiftUI
 
 struct StackView: View {
 
-	@Binding var stack: Stack
+	@ObservedObject var stack: Stack
 
 	var body: some View {
 
@@ -19,9 +19,9 @@ struct StackView: View {
 
 			ScrollView {
 				VStack {
-				ForEach(stack.content) { thing in
+					ForEach(stack.content) { thing in
 					VStack {
-						ThingCardView(thing: Binding(get: { thing }, set: { thing.update(thing: $0) }))
+						ThingCardView(thing: Binding(get: { thing }, set: { thing.update(thing: $0) })).id(thing.hashValue)
 					}
 				}
 				}
@@ -34,6 +34,6 @@ struct StackView: View {
 struct StackView_Previews: PreviewProvider {
 	@State var stack: Stack = .init(.all)
 	static var previews: some View {
-		StackView(stack: .constant(Stack(.all)))
+		StackView(stack: Stack(.all))
 	}
 }

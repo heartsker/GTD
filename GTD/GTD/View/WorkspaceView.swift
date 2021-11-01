@@ -26,13 +26,12 @@ struct WorkspaceView: View {
 
 			ScrollView(.horizontal) {
 				HStack {
-					ForEach(workspace.stacks.keys.sorted(by: { $0.rawValue < $1.rawValue}), id: \.self) { type in
-						HStack {
-						StackView(stack: Binding(get: { workspace.stacks[type]!}, set: {workspace.stacks[type]! = $0}))
-						}
+					ForEach(Array(workspace.stacks.values), id: \.self) { stack in
+						StackView(stack: stack)
 					}
 				}
 			}
+			.padding()
 
 			Button {
 				print(workspace)
